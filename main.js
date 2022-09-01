@@ -13,6 +13,23 @@ function addBookToLibrary(title, author, pages, read) {
   library.push(newBook);
 };
 
+function toggleNewBookForm() {
+  const modalForm = document.querySelector('.modal');
+  const backdrop = document.querySelector('.backdrop');
+  modalForm.classList.toggle('show');
+  backdrop.classList.toggle('show');
+}
+
+const newBookBtn = document.querySelector('.newBookBtn');
+newBookBtn.addEventListener('click', event => {
+  toggleNewBookForm();
+})
+
+const exitFormBtn = document.querySelector('.exit-btn');
+exitFormBtn.addEventListener('click', event => {
+  toggleNewBookForm();
+})
+
 function displayBooks() {
   library.forEach(book => {
     const div = document.createElement('div');

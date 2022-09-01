@@ -1,5 +1,86 @@
+body {
+  font-family: 'Eczar', serif;
+  display: grid;
+  justify-items: center;
+}
+
 .books-container {
   display: flex;
   flex-flow: row wrap;
   gap: 20px;
+}
+
+.newBookBtn {
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-flow: column wrap;
+  padding-bottom: 20px;
+}
+
+form input {
+  max-width: 300px;
+  margin-bottom: 15px;
+}
+
+form select {
+  width: max-content;
+  margin-bottom: 15px;
+  font-family: 'Eczar', serif;
+}
+
+input, button {
+  font-family: 'Eczar', serif;
+}
+
+.modal {
+  border: 2px solid red;
+  padding: 40px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  position: fixed;
+  top: 0%;
+  left: 50%;
+  transform-origin: center;
+  transform: translate(-50%, -80%);
+  pointer-events: none;
+  opacity: 0%;
+
+  transition: top 0.3s, opacity 0.3s;
+}
+
+.backdrop {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background: #000;
+  opacity: 0%;
+}
+
+.modal.show {
+  opacity: 100%;
+  pointer-events: all;
+  top: 50%;
+}
+
+.backdrop.show {
+  opacity: 40%;
+}
+
+.exit-btn {
+  font-family: 'Quicksand', sans-serif;
+  padding: 5px;
+  font-size: 22px;
+  color: white;
+  position: fixed;
+  top: 0%;
+  right: 0%;
+  transform: translateY(-100%);
+}
+
+.exit-btn:hover {
+  cursor: pointer;
 }
