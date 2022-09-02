@@ -9,6 +9,14 @@ function Book(title, author, pages, read) {
   this.read = read
 };
 
+Book.prototype.toggleReadStatus = function() {
+  if (this.read === 'true') {
+    this.read = 'false'
+  } else {
+    this.read = 'true'
+  };
+}
+
 function addBookToLibrary(title, author, pages, read) {
   const newBook = new Book(title, author, pages, read);
   library.push(newBook);
@@ -40,6 +48,14 @@ addBookBtn.addEventListener('click', event => {
   createBookCard(library.at(-1));
 })
 
+function toggleReadText(book, text) {
+  if (book.read === 'true') {
+    text.textContent = 'Read';
+  } else {
+    text.textContent = 'Not Read yet';
+  };
+}
+
 function createBookCard(book) {
   const div = document.createElement('div');
   div.setAttribute('class', 'book-card');
@@ -58,12 +74,17 @@ function createBookCard(book) {
   div.appendChild(para3);
 
   const para4 = document.createElement('p');
-  if (book.read === 'true') {
-    para4.textContent = 'Have Read'
-  } else {
-    para4.textContent = 'Have Not Read'
-  };
+  toggleReadText(book, para4);
   div.appendChild(para4);
+
+  const readStatusBtn = document.createElement('button');
+  readStatusBtn.setAttribute('class', 'readStatusBtn');
+  readStatusBtn.textContent = 'Change Status';
+  div.appendChild(readStatusBtn);
+  readStatusBtn.addEventListener('click', event => {
+    book.toggleReadStatus();
+    toggleReadText(book, para4);
+  })
 
   const deleteBookBtn = document.createElement('button');
   deleteBookBtn.dataset.bookIndex = book.id;

@@ -8,29 +8,60 @@ p {
   margin: 0;
 }
 
+svg {
+  filter: invert(92%) sepia(79%) saturate(0%) hue-rotate(75deg) brightness(110%) contrast(94%);
+}
+
 .books-container {
   display: flex;
   flex-flow: row wrap;
   gap: 20px;
 }
 
-.newBookBtn {
-  margin-bottom: 20px;
-  background: #2B738C;
-  outline: none;
+button {
+	outline: none;
   border: none;
-  padding: 10px 10px 5px 10px;
   border-radius: 5px;
+  background: #2B738C;
+  color: white;
+  max-width: max-content;
 }
 
-.newBookBtn svg {
-  filter: invert(92%) sepia(79%) saturate(0%) hue-rotate(75deg) brightness(110%) contrast(94%);
-}
-
-.newBookBtn:hover {
+button:hover {
   cursor: pointer;
   opacity: 70%;
   box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.newBookBtn {
+  margin-bottom: 20px;
+  padding: 10px 10px 5px 10px;
+}
+
+.readStatusBtn {
+  padding: 5px;
+}
+
+.exit-btn {
+	background: none;
+  font-family: 'Quicksand', sans-serif;
+  padding: 5px;
+  font-size: 22px;
+  color: white;
+  position: fixed;
+  top: 0%;
+  right: 0%;
+  transform: translateY(-100%);
+}
+
+.exit-btn:hover {
+  cursor: pointer;
+}
+
+.deleteBookBtn {
+  transform: scale(0.5);
+  padding-top: 7px;
+  justify-self: center;
 }
 
 .book-card {
@@ -41,25 +72,6 @@ p {
   border-bottom: 4px solid #8c442b;
   border-radius: 5px;
   display: grid;
-}
-
-.book-card button {
-  transform: scale(0.5);
-  outline: none;
-  border: none;
-  padding-top: 7px;
-  background: #2B738C;
-  border-radius: 5px;
-  justify-self: center;
-}
-
-.book-card svg {
-  filter: invert(92%) sepia(79%) saturate(0%) hue-rotate(75deg) brightness(110%) contrast(94%);
-}
-
-.book-card button:hover {
-  cursor: pointer;
-  opacity: 70%;
 }
 
 form {
@@ -116,19 +128,4 @@ input, button {
 
 .backdrop.show {
   opacity: 40%;
-}
-
-.exit-btn {
-  font-family: 'Quicksand', sans-serif;
-  padding: 5px;
-  font-size: 22px;
-  color: white;
-  position: fixed;
-  top: 0%;
-  right: 0%;
-  transform: translateY(-100%);
-}
-
-.exit-btn:hover {
-  cursor: pointer;
 }
