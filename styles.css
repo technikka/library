@@ -6,6 +6,7 @@ body {
 
 p {
   margin: 0;
+  width: max-content;
 }
 
 svg {
@@ -18,16 +19,15 @@ svg {
   gap: 20px;
 }
 
-button {
+button, .submitBook {
 	outline: none;
   border: none;
   border-radius: 5px;
   background: #2B738C;
   color: white;
-  max-width: max-content;
 }
 
-button:hover {
+button:hover, .submitBook:hover {
   cursor: pointer;
   opacity: 70%;
   box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
@@ -39,7 +39,8 @@ button:hover {
 }
 
 .readStatusBtn {
-  padding: 5px;
+  width: 107px;
+  padding: 4px 8px;
 }
 
 .exit-btn {
@@ -72,6 +73,7 @@ button:hover {
   border-bottom: 4px solid #8c442b;
   border-radius: 5px;
   display: grid;
+  max-width: 200px;
 }
 
 form {
