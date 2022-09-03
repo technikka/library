@@ -22,11 +22,37 @@ function addBookToLibrary(title, author, pages, read) {
   library.push(newBook);
 };
 
+const modalFocusableElments = [document.querySelector('.exit-btn'),
+                               document.getElementsByName('title')[0],
+                               document.getElementsByName('author')[0],
+                               document.getElementsByName('pages')[0],
+                               document.getElementsByName('read')[0],
+                               document.querySelector('.submitBook')]
+
+// updates with interaction of form modal
+function updateTabOrder() {
+  if (exitFormBtn.tabIndex === -1) {
+    modalFocusableElments.forEach(element => {
+      element.tabIndex = 0;
+    })
+  } else {
+    modalFocusableElments.forEach(element => {
+      element.tabIndex = -1;
+    });
+  }
+}
+
 function toggleNewBookForm() {
   const modalForm = document.querySelector('.modal');
   const backdrop = document.querySelector('.backdrop');
   modalForm.classList.toggle('show');
   backdrop.classList.toggle('show');
+  updateTabOrder();
+  if (modalForm.classList.contains('show')) {
+    document.querySelector('.exit-btn').focus();
+  } else {
+    document.querySelector('.submitBook').focus();
+  }
 }
 
 const newBookBtn = document.querySelector('.newBookBtn');
@@ -37,6 +63,11 @@ newBookBtn.addEventListener('click', event => {
 const exitFormBtn = document.querySelector('.exit-btn');
 exitFormBtn.addEventListener('click', event => {
   toggleNewBookForm();
+})
+exitFormBtn.addEventListener('keypress', event => {
+  if (event.code === 'Enter') {
+    toggleNewBookForm();
+  }
 })
 
 const addBookBtn = document.querySelector('.submitBook');

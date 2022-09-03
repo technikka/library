@@ -1,5 +1,5 @@
 body {
-  font-family: 'Eczar', serif;
+  font-family: 'Times New Roman', serif;
   display: grid;
   justify-items: center;
 }
@@ -17,6 +17,14 @@ svg {
   display: flex;
   flex-flow: row wrap;
   gap: 20px;
+}
+
+input:focus, select:focus, .exit-btn:focus {
+  outline: 2px solid #8c2b73;
+}
+
+button:focus, .submitBook:focus {
+  outline: 4px solid #8c2b73;
 }
 
 button, .submitBook {
@@ -45,7 +53,7 @@ button:hover, .submitBook:hover {
 
 .exit-btn {
 	background: none;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Arial', 'sans-serif';
   padding: 5px;
   font-size: 22px;
   color: white;

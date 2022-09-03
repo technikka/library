@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Eczar&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">  
   <title>My Library</title>
 </head>
 <body>
@@ -13,32 +11,31 @@
   <button class="newBookBtn" title="Add New Book">
     <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M25.45 29.1h2.9v-6.55h6.55v-2.9h-6.55V13.1h-2.9v6.55H18.9v2.9h6.55ZM12.9 38q-1.15 0-2.025-.875T10 35.1v-28q0-1.1.875-1.975T12.9 4.25h28q1.1 0 1.975.875T43.75 7.1v28q0 1.15-.875 2.025T40.9 38Zm0-2.9h28v-28h-28v28Zm-5.75 8.65q-1.15 0-2.025-.875T4.25 40.85V10h2.9v30.85H38v2.9ZM12.9 7.1v28-28Z"/></svg>
   </button>
+  <div class="books-container"></div>
   <div class="backdrop"></div>
   <div class="modal">
-    <div class="exit-btn">X</div>
+    <div class="exit-btn" tabindex='-1'>X</div>
     <section>
       <form action="">
-        <label for="title">Title</label>
+        <label for="title" tabindex='-1'>Title</label>
         <input type="text" name="title">
   
-        <label for="author">Author</label>
+        <label for="author" tabindex='-1'>Author</label>
         <input type="text" name="author">
   
-        <label for="pages">Number of Pages</label>
+        <label for="pages" tabindex='-1'>Number of Pages</label>
         <input type="text" name=pages>
   
-        <label for="read">Have you read this?</label>
-        <select name="read" id="">
+        <label for="read" tabindex='-1'>Have you read this?</label>
+        <select name="read" tabindex='-1' id="">
           <option value="true">Yes</option>
           <option value="false">No</option>
         </select>
   
-        <input type="submit" class="submitBook" value="Add Book To Library">
+        <input type="submit" tabindex='-1' class="submitBook" value="Add Book To Library">
       </form>
     </section>
   </div>
-
-  <div class="books-container"></div>
 
   <script src="main.js"></script>
 </body>
