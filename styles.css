@@ -19,11 +19,11 @@ svg {
   gap: 20px;
 }
 
-input:focus, select:focus, .exit-btn:focus {
+input:focus-visible, select:focus-visible, .exit-btn:focus-visible {
   outline: 2px solid #8c2b73;
 }
 
-button:focus, .submitBook:focus {
+button:focus-visible, .submitBook:focus-visible {
   outline: 4px solid #8c2b73;
 }
 
