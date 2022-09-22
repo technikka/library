@@ -1,4 +1,28 @@
-let library = [];
+class Library {
+
+  constructor(array = []) {
+    this.books = array; 
+  }
+
+  displayBooks() {
+    this.books.forEach(book => {
+      createBookCard(book);
+    });
+  }
+
+  deleteBook(book, div) {
+    let findBookID = (element) => element.id === book.id;
+    let indexOfBook = this.books.findIndex(findBookID);
+    this.books.splice(indexOfBook, 1);
+    let cardToRemove = div.parentElement;
+    cardToRemove.remove();
+  }
+
+  addBook(title, author, pages, read) {
+    const newBook = new Book(title, author, pages, read);
+    this.books.push(newBook);
+  };
+}
 const container = document.querySelector('.books-container');
 
 function Book(title, author, pages, read) {
@@ -16,11 +40,6 @@ Book.prototype.toggleReadStatus = function() {
     this.read = 'true'
   };
 }
-
-function addBookToLibrary(title, author, pages, read) {
-  const newBook = new Book(title, author, pages, read);
-  library.push(newBook);
-};
 
 const modalFocusableElments = [document.querySelector('.exit-btn'),
                                document.getElementsByName('title')[0],
@@ -75,8 +94,8 @@ addBookBtn.addEventListener('click', event => {
   // preventDefault to keep the from from submitting thus refreshing page.
   event.preventDefault();
   toggleNewBookForm();
-  addBookToLibrary(document.getElementsByName('title')[0].value, document.getElementsByName('author')[0].value, document.getElementsByName('pages')[0].value, document.getElementsByName('read')[0].value);
-  createBookCard(library.at(-1));
+  library.addBook(document.getElementsByName('title')[0].value, document.getElementsByName('author')[0].value, document.getElementsByName('pages')[0].value, document.getElementsByName('read')[0].value);
+  createBookCard(library.books.at(-1));
 })
 
 function toggleReadText(book, text) {
@@ -123,26 +142,13 @@ function createBookCard(book) {
   deleteBookBtn.setAttribute('title', 'Delete From Library');
   deleteBookBtn.setAttribute('class', 'deleteBookBtn');
   deleteBookBtn.addEventListener('click', event => {
-    deleteBookFromLibrary(book, deleteBookBtn);
+    library.deleteBook(book, deleteBookBtn);
   });
   div.appendChild(deleteBookBtn);
 }
 
-function deleteBookFromLibrary(book, div) {
-  const findBookID = (element) => element.id === book.id;
-  indexOfBook = library.findIndex(findBookID);
-  library.splice(indexOfBook, 1);
-  cardToRemove = div.parentElement;
-  cardToRemove.remove();
-}
-
-function displayBooks() {
-  library.forEach(book => {
-    createBookCard(book);
-  });
-}
-
-addBookToLibrary('The Ramayana', 'Valmiki', '360', 'true');
-addBookToLibrary('Parzival', 'Wolfram Von Eschenback', '436', 'true');
-addBookToLibrary('Eloquent Ruby', 'Russ Olsen', '400', 'true');
-displayBooks();
+let library = new Library();
+library.addBook('The Ramayana', 'Valmiki', '360', 'true');
+library.addBook('Parzival', 'Wolfram Von Eschenback', '436', 'true');
+library.addBook('Eloquent Ruby', 'Russ Olsen', '400', 'true');
+library.displayBooks();
