@@ -124,57 +124,60 @@ class BookCard {
 
 }
 
-const modalFocusableElments = [document.querySelector('.exit-btn'),
-                               document.getElementsByName('title')[0],
-                               document.getElementsByName('author')[0],
-                               document.getElementsByName('pages')[0],
-                               document.getElementsByName('read')[0],
-                               document.querySelector('.submitBook')]
+class Controls {
 
-// updates with interaction of form modal
-function updateTabOrder() {
-  if (exitFormBtn.tabIndex === -1) {
-    modalFocusableElments.forEach(element => {
-      element.tabIndex = 0;
-    })
-  } else {
-    modalFocusableElments.forEach(element => {
-      element.tabIndex = -1;
-    });
+  static modalFocusableElments = [document.querySelector('.exit-btn'),
+                                  document.getElementsByName('title')[0],
+                                  document.getElementsByName('author')[0],
+                                  document.getElementsByName('pages')[0],
+                                  document.getElementsByName('read')[0],
+                                  document.querySelector('.submitBook')]
+
+  // updates with interaction of form modal
+  static updateTabOrder() {
+    if (exitFormBtn.tabIndex === -1) {
+      this.modalFocusableElments.forEach(element => {
+        element.tabIndex = 0;
+      })
+    } else {
+      this.modalFocusableElments.forEach(element => {
+        element.tabIndex = -1;
+      });
+    }
   }
-}
 
-function toggleNewBookForm() {
-  const modalForm = document.querySelector('.modal');
-  const backdrop = document.querySelector('.backdrop');
-  modalForm.classList.toggle('show');
-  backdrop.classList.toggle('show');
-  updateTabOrder();
-  if (modalForm.classList.contains('show')) {
-    document.querySelector('.exit-btn').focus();
-  } else {
-    document.querySelector('.submitBook').focus();
+  static toggleNewBookForm() {
+    const modalForm = document.querySelector('.modal');
+    const backdrop = document.querySelector('.backdrop');
+    modalForm.classList.toggle('show');
+    backdrop.classList.toggle('show');
+    this.updateTabOrder();
+    if (modalForm.classList.contains('show')) {
+      document.querySelector('.exit-btn').focus();
+    } else {
+      document.querySelector('.submitBook').focus();
+    }
   }
 }
 
 const newBookBtn = document.querySelector('.newBookBtn');
 newBookBtn.addEventListener('click', event => {
-  toggleNewBookForm();
+  Controls.toggleNewBookForm();
 })
 
 const exitFormBtn = document.querySelector('.exit-btn');
 exitFormBtn.addEventListener('click', event => {
-  toggleNewBookForm();
+  Controls.toggleNewBookForm();
 })
 exitFormBtn.addEventListener('keypress', event => {
   if (event.code === 'Enter') {
-    toggleNewBookForm();
+    Controls.toggleNewBookForm();
   }
 })
 
 const addBookBtn = document.querySelector('.submitBook');
 addBookBtn.addEventListener('click', event => {
-  // preventDefault to keep the from from submitting thus refreshing page.
+  // preventDefault to keep from submitting, thus refreshing page.
   event.preventDefault();
   toggleNewBookForm();
   library.addBook(document.getElementsByName('title')[0].value, document.getElementsByName('author')[0].value, document.getElementsByName('pages')[0].value, document.getElementsByName('read')[0].value);
