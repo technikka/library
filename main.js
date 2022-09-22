@@ -19,27 +19,32 @@ class Library {
   }
 
   addBook(title, author, pages, read) {
-    const newBook = new Book(title, author, pages, read);
+    let id = this.books.length;
+    const newBook = new Book(id, title, author, pages, read);
     this.books.push(newBook);
   };
 }
-const container = document.querySelector('.books-container');
 
-function Book(title, author, pages, read) {
-  this.id = library.length;
-  this.title = title
-  this.author = author
-  this.pages = pages
-  this.read = read
-};
+class Book {
 
-Book.prototype.toggleReadStatus = function() {
-  if (this.read === 'true') {
-    this.read = 'false'
-  } else {
-    this.read = 'true'
-  };
+  constructor(id, title, author, pages, read) {
+    this.id = id;
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+
+  toggleReadStatus() {
+    if (this.read === 'true') {
+      this.read = 'false'
+    } else {
+      this.read = 'true'
+    };
+  }
 }
+
+const container = document.querySelector('.books-container');
 
 const modalFocusableElments = [document.querySelector('.exit-btn'),
                                document.getElementsByName('title')[0],
